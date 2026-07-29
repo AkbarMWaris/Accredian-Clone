@@ -13,10 +13,12 @@ import FAQSection from "@/components/FAQ";
 import Testimonials from "@/components/Testimonials";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
+import { EnquireProvider } from "@/context/EnquireContext";
+import EnquireModal from "@/components/EnquireModal";
 
 export default function Home() {
   return (
-    <>
+    <EnquireProvider>
       <ScrollToTop />
       <Navbar />
       <main>
@@ -34,6 +36,7 @@ export default function Home() {
         <CTA />
       </main>
       <Footer />
-    </>
+      <EnquireModal />
+    </EnquireProvider>
   );
 }

@@ -1,7 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import { CheckCircle } from "lucide-react";
+import { useEnquire } from "@/context/EnquireContext";
 
 export default function Hero() {
+  const { setOpen } = useEnquire();
+
   return (
     <section id="hero" className="relative min-h-[calc(100vh-88px)] flex items-center pt-40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
@@ -28,12 +33,12 @@ export default function Hero() {
               )}
             </div>
             <div className="mt-8">
-              <a
-                href="#contact"
-                className="inline-block bg-universal hover:bg-[#1557B0] text-white px-8 py-3 rounded-lg text-lg font-semibold transition-colors"
+              <button
+                onClick={() => setOpen(true)}
+                className="inline-block bg-universal hover:bg-[#1557B0] text-white px-8 py-3 rounded-lg text-lg font-semibold transition-colors cursor-pointer"
               >
                 Enquire Now
-              </a>
+              </button>
             </div>
           </div>
           <div className="w-full lg:w-1/2 flex justify-center">

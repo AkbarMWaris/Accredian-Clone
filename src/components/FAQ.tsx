@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
+import { useEnquire } from "@/context/EnquireContext";
 
 const categories = ["About the Course", "About the Delivery", "Miscellaneous"];
 
@@ -45,6 +46,7 @@ const faqData: Record<string, { question: string; answer: string }[]> = {
 };
 
 export default function FAQSection() {
+  const { setOpen } = useEnquire();
   const [activeTab, setActiveTab] = useState("About the Course");
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
@@ -109,12 +111,12 @@ export default function FAQSection() {
         </div>
 
         <div className="flex justify-center mt-12">
-          <a
-            href="#contact"
-            className="inline-block bg-universal hover:bg-[#1557B0] text-white px-8 py-3 rounded-lg text-lg font-semibold transition-colors"
+          <button
+            onClick={() => setOpen(true)}
+            className="inline-block bg-universal hover:bg-[#1557B0] text-white px-8 py-3 rounded-lg text-lg font-semibold transition-colors cursor-pointer"
           >
             Enquire Now
-          </a>
+          </button>
         </div>
       </div>
     </section>
