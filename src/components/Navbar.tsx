@@ -9,7 +9,7 @@ const NAV_ITEMS = [
   { label: "Clients", href: "#partnerships" },
   { label: "Accredian Edge", href: "#edge" },
   { label: "CAT", href: "#cat" },
-  { label: "How It Works", href: "#" },
+  { label: "How It Works", href: "#how-it-works" },
   { label: "FAQs", href: "#faq" },
   { label: "Testimonials", href: "#testimonials" },
 ];

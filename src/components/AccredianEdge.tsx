@@ -21,7 +21,8 @@ export default function AccredianEdge() {
             The <span className="text-universal">Accredian Edge</span>
           </h2>
           <p className="mt-3 text-lg text-gray-600">
-            Key Aspects of <span className="text-universal">Our Strategic Training</span>
+            Key Aspects of{" "}
+            <span className="text-universal">Our Strategic Training</span>
           </p>
         </div>
 
@@ -48,19 +49,8 @@ export default function AccredianEdge() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {edges.map((edge) => (
             <div
-              key={edge.title}
-              className="p-6 rounded-xl border border-gray-200 hover:border-universal/30 hover:shadow-lg transition-all group"
-            >
-              <div className="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center text-2xl group-hover:bg-blue-100 transition-colors">
-                {edge.icon}
-              </div>
-              <h3 className="mt-4 text-lg font-semibold text-gray-900">
-                {edge.title}
-              </h3>
-              <p className="mt-2 text-gray-600 text-sm leading-relaxed">
-                {edge.description}
-              </p>
-            </div>
+            key={edge.title}
+            ></div>
           ))}
         </div>
       </div>
