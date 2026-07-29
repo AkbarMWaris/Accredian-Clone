@@ -77,9 +77,9 @@ export async function getNavLinks(): Promise<NavLink[]> {
 export async function getStats(): Promise<Stat[]> {
   await delay(100);
   return [
-    { value: "10K+", label: "Professionals Trained" },
-    { value: "200+", label: "Sessions Delivered" },
-    { value: "5K+", label: "Active Learners" },
+    { value: "10K+", label: "Professionals trained for exceptional career success" },
+    { value: "200+", label: "Sessions delivered with unmatched learning excellence" },
+    { value: "5K+", label: "Active learners engaged in dynamic courses" },
   ];
 }
 

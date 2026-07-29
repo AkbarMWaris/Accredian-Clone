@@ -15,23 +15,27 @@ export default function Stats() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
-            Our Track Record
+            Our <span className="text-universal">Track Record</span>
           </h2>
           <p className="mt-3 text-lg text-gray-600">
-            The Numbers Behind Our Success
+            The Numbers Behind <span className="text-universal">Our Success</span>
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {stats.map((stat) => (
+        <div className="flex flex-col md:flex-row items-center md:items-stretch">
+          {stats.map((stat, index) => (
             <div
               key={stat.label}
-              className="text-center p-8 rounded-xl bg-blue-50 border border-blue-100"
+              className={`flex-1 text-center py-8 px-6 ${
+                index < stats.length - 1 ? "md:border-r border-gray-200" : ""
+              }`}
             >
-              <div className="text-4xl sm:text-5xl font-bold text-universal">
+              <span className="inline-block text-3xl md:text-5xl font-bold text-universal bg-blue-50 px-4 py-2 rounded-lg">
                 {stat.value}
-              </div>
-              <p className="mt-3 text-gray-700 font-medium">{stat.label}</p>
+              </span>
+              <p className="mt-4 text-gray-700 font-medium leading-relaxed">
+                {stat.label}
+              </p>
             </div>
           ))}
         </div>
