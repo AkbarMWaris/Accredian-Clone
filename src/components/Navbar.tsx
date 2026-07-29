@@ -5,11 +5,13 @@ import Image from "next/image";
 
 const NAV_ITEMS = [
   { label: "Home", href: "#hero" },
+  { label: "Stats", href: "#stats" },
   { label: "Clients", href: "#partnerships" },
-  { label: "CAT Framework", href: "#cat" },
+  { label: "Accredian Edge", href: "#edge" },
+  { label: "CAT", href: "#cat" },
+  { label: "How It Works", href: "#" },
   { label: "FAQs", href: "#faq" },
   { label: "Testimonials", href: "#testimonials" },
-  { label: "Contact Us", href: "#contact" },
 ];
 
 export default function Navbar() {
@@ -25,7 +27,7 @@ export default function Navbar() {
           }
         });
       },
-      { rootMargin: "-80px 0px -50% 0px", threshold: 0 }
+      { rootMargin: "-88px 0px -50% 0px", threshold: 0 }
     );
 
     NAV_ITEMS.forEach(({ href }) => {
@@ -37,10 +39,20 @@ export default function Navbar() {
     return () => observer.disconnect();
   }, []);
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    setActiveSection(id);
+    const el = document.getElementById(id);
+    if (el) {
+      const y = el.getBoundingClientRect().top + window.scrollY - 88;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+  };
+
   return (
     <nav className="fixed top-0 w-full z-50 bg-white shadow-md py-6 px-6 md:px-14">
       <div className="flex justify-between items-center">
-        <a href="#hero">
+        <a href="#hero" onClick={(e) => handleNavClick(e, "hero")}>
           <Image
             src="https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/Accredian-react-site-images/other/logo.webp"
             alt="Accredian"
@@ -58,6 +70,7 @@ export default function Navbar() {
               <a
                 key={href}
                 href={href}
+                onClick={(e) => handleNavClick(e, id)}
                 className={`text-[16px] font-normal cursor-pointer ${
                   isActive
                     ? "text-universal font-semibold border-b-[3px] border-universal"
@@ -94,7 +107,7 @@ export default function Navbar() {
               <a
                 key={href}
                 href={href}
-                onClick={() => setMenuOpen(false)}
+                onClick={(e) => { setMenuOpen(false); handleNavClick(e, id); }}
                 className={`block py-2 text-[16px] ${
                   isActive ? "text-universal font-semibold" : "text-black"
                 }`}

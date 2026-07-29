@@ -12,7 +12,7 @@ export default function CTA() {
   };
 
   return (
-    <section id="contact" className="py-16 bg-[#1A73E8]">
+    <section id="contact" className="py-16 bg-universal">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
@@ -55,7 +55,7 @@ export default function CTA() {
                     required
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1A73E8] focus:border-transparent outline-none"
+                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-universal focus:border-transparent outline-none"
                   />
                 </div>
                 <div>
@@ -65,7 +65,7 @@ export default function CTA() {
                     required
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1A73E8] focus:border-transparent outline-none"
+                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-universal focus:border-transparent outline-none"
                   />
                 </div>
                 <div>
@@ -75,7 +75,7 @@ export default function CTA() {
                     required
                     value={form.company}
                     onChange={(e) => setForm({ ...form, company: e.target.value })}
-                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1A73E8] focus:border-transparent outline-none"
+                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-universal focus:border-transparent outline-none"
                   />
                 </div>
                 <div>
@@ -84,12 +84,12 @@ export default function CTA() {
                     rows={3}
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1A73E8] focus:border-transparent outline-none"
+                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-universal focus:border-transparent outline-none"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="w-full bg-[#1A73E8] hover:bg-[#1557B0] text-white py-3 rounded-lg font-semibold transition-colors"
+                  className="w-full bg-universal hover:bg-[#1557B0] text-white py-3 rounded-lg font-semibold transition-colors"
                 >
                   Request a Demo
                 </button>
