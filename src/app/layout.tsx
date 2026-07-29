@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   title: "Accredian Enterprise | Corporate Training & Upskilling",
   description:
     "Next-Gen Expertise For Your Enterprise. Cultivate high-performance teams through expert learning with Accredian Enterprise.",
+  icons: {
+    icon: "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/Accredian-react-site-images/other/logo.webp",
+  },
 };
 
 export default function RootLayout({
