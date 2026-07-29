@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Accredian Enterprise Clone
 
-## Getting Started
+A pixel-perfect clone of the [Accredian Enterprise](https://enterprise.accredian.com/) website built with **Next.js 16 (App Router)** and **Tailwind CSS v4**.
 
-First, run the development server:
+## Setup Instructions
 
 ```bash
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Build for production
+npm run build
+
+# Run linter
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Approach Taken
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Analysis** — Fetched the original site to extract its content structure, color palette, and component layout. The brand color `#1A73E8` (blue) was identified and defined as `--color-universal` in `globals.css`.
 
-## Learn More
+2. **Component breakdown** — Split the page into 14 modular sections (Navbar, Hero, Stats, Partnerships, AccredianEdge, DomainExpertise, CourseSegmentation, WhoShouldJoin, CATFramework, HowWeDeliverResults, FAQ, Testimonials, CTA, Footer), each in its own file under `src/components/`.
 
-To learn more about Next.js, take a look at the following resources:
+3. **API layer** — Created a mock async API (`src/lib/api.ts`) with typed interfaces to supply data to each section, making it easy to swap in real API calls later.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. **Image handling** — All images are served from the original site's CDN (`storage.googleapis.com/accredian-assets/`) using Next.js `<Image>` with proper `remotePatterns` configuration. Client logos use `logo.clearbit.com`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+5. **Styling** — Tailwind CSS v4 with the `@theme` directive. Used the original site's exact spacing, border radii, font sizes, and hover effects. Two-color headings (gray + blue accent) follow the original pattern.
 
-## Deploy on Vercel
+6. **Interactive features** — IntersectionObserver-based active nav tracking, smooth scroll, testimonial carousel with translateX slide transitions, FAQ accordion with category tabs, and an enquiry modal with form validation.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+7. **Mobile responsive** — All sections adapt from mobile to desktop with appropriate breakpoints (`sm`, `md`, `lg`). Navbar collapses to a hamburger menu at `lg`. Footer switches from dark (mobile) to light (desktop).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## AI Usage Explanation
+
+This project was built interactively with an AI assistant (opencode). The AI:
+
+- Analyzed the original site's HTML structure by fetching the page
+- Wrote the initial component scaffold and progressively refined it based on user feedback
+- Applied visual adjustments (colors, spacing, icon replacements, layout changes) iteratively
+- Debugged build errors and fixed type/runtime issues
+- Implemented interactive features (modal, carousel, accordion, nav tracking)
+
+Every change was reviewed and verified by running `npm run build` and `npm run lint` to ensure zero errors.
+
+## Improvements With More Time
+
+- **Real API integration** — Replace the mock `api.ts` with actual endpoints for dynamic content
+- **Form submission** — Wire the enquiry modal and CTA to a real backend or CRM (e.g., email service, webhook)
+- **Animations** — Add scroll-triggered entry animations (fade-in, slide-up) using Framer Motion or IntersectionObserver
+- **Image optimization** — Migrate CDN images to a Next.js Image optimization pipeline for better performance
+- **SEO** — Add structured data (JSON-LD), meta tags, and Open Graph images per section
+- **Performance** — Implement route prefetching, lazy-load below-fold sections, and add loading skeletons
+- **Accessibility** — Improve keyboard navigation, add aria labels, and test with screen readers
+- **Testing** — Add unit tests (Jest/Vitest) and E2E tests (Playwright) for interactive components
