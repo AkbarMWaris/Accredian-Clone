@@ -1,42 +1,62 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { getTargetAudiences, type TargetAudience } from "@/lib/api";
+import { Cpu, Users, Rocket, Briefcase } from "lucide-react";
+import Image from "next/image";
+
+const audiences = [
+  {
+    title: "Tech Professionals",
+    description: "Enhance expertise, embrace tech, drive innovation.",
+    icon: Cpu,
+  },
+  {
+    title: "Non-Tech Professionals",
+    description: "Adapt digitally, collaborate in tech environments.",
+    icon: Users,
+  },
+  {
+    title: "Emerging Professionals",
+    description: "Develop powerful skills for rapid career growth.",
+    icon: Rocket,
+  },
+  {
+    title: "Senior Professionals",
+    description: "Strengthen leadership, enhance strategic decisions.",
+    icon: Briefcase,
+  },
+];
 
 export default function WhoShouldJoin() {
-  const [audiences, setAudiences] = useState<TargetAudience[]>([]);
-
-  useEffect(() => {
-    getTargetAudiences().then(setAudiences);
-  }, []);
-
-  if (audiences.length === 0) return null;
-
   return (
-    <section id="audience" className="py-16 bg-[#1A73E8]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white">
-            Who Should Join?
-          </h2>
-          <p className="mt-3 text-lg text-blue-200">
-            Strategic Skill Enhancement
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {audiences.map((item) => (
-            <div
-              key={item.title}
-              className="p-6 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all"
-            >
-              <div className="text-4xl mb-3">{item.icon}</div>
-              <h3 className="text-lg font-semibold text-white">{item.title}</h3>
-              <p className="mt-2 text-blue-200 text-sm leading-relaxed">
-                {item.description}
-              </p>
+    <section id="audience">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+        <div className="bg-[#1A73E8] rounded-3xl p-8 md:p-14 grid md:grid-cols-2 gap-10 items-center">
+          <div className="flex flex-col items-start">
+            <p className="text-blue-100 mb-1">Who Should Join?</p>
+            <h3 className="text-3xl font-bold text-white mb-6">
+              Strategic Skill Enhancement
+            </h3>
+            <div className="relative w-full h-64">
+              <Image
+                src="https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/Accredian-react-site-images/other/imagehuman.png"
+                alt="Professionals learning"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-contain rounded-xl"
+              />
             </div>
-          ))}
+          </div>
+          <div className="grid grid-cols-2 gap-8">
+            {audiences.map((item) => (
+              <div key={item.title} className="text-white">
+                <div className="w-11 h-11 rounded-lg border border-white/40 flex items-center justify-center mb-3">
+                  <item.icon size={22} />
+                </div>
+                <h4 className="font-semibold mb-1">{item.title}</h4>
+                <p className="text-sm text-blue-100">{item.description}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
