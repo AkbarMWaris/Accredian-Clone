@@ -62,7 +62,7 @@ export default function Navbar() {
           />
         </a>
 
-        <div className="hidden md:flex justify-end items-center flex-1 space-x-8">
+        <div className="hidden lg:flex justify-end items-center flex-1 space-x-8">
           {NAV_ITEMS.map(({ label, href }) => {
             const id = href.replace("#", "");
             const isActive = activeSection === id;
@@ -84,7 +84,7 @@ export default function Navbar() {
         </div>
 
         <button
-          className="md:hidden p-2"
+          className="lg:hidden p-2"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
@@ -99,7 +99,7 @@ export default function Navbar() {
       </div>
 
       {menuOpen && (
-        <div className="absolute top-22 right-5 bg-white shadow-lg p-6 rounded-xl md:hidden">
+        <div className="absolute top-22 right-5 bg-white shadow-lg p-6 rounded-xl lg:hidden">
           {NAV_ITEMS.map(({ label, href }) => {
             const id = href.replace("#", "");
             const isActive = activeSection === id;
