@@ -1,9 +1,12 @@
 "use client";
 
+import { Search, Route, Rocket } from "lucide-react";
+
+const stepIcons = [Search, Route, Rocket];
+
 const steps = [
   {
     number: "01",
-    icon: "🔍",
     title: "Skill Gap Analysis",
     description:
       "We conduct a thorough assessment of your team's current capabilities and identify critical skill gaps through surveys, interviews, and benchmarking.",
@@ -15,7 +18,6 @@ const steps = [
   },
   {
     number: "02",
-    icon: "🗺️",
     title: "Customized Training Plan",
     description:
       "Our experts design a bespoke learning roadmap aligned with your business goals, team structure, and industry context.",
@@ -27,7 +29,6 @@ const steps = [
   },
   {
     number: "03",
-    icon: "🚀",
     title: "Flexible Program Delivery",
     description:
       "Deliver training through live instructor-led sessions, self-paced modules, or a blended approach — online or on-site at your premises.",
@@ -38,6 +39,8 @@ const steps = [
     ],
   },
 ];
+
+const stepsWithIcons = steps.map((step, i) => ({ ...step, Icon: stepIcons[i] }));
 
 export default function HowWeDeliverResults() {
   return (
@@ -53,14 +56,14 @@ export default function HowWeDeliverResults() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {steps.map((step) => (
+          {stepsWithIcons.map((step) => (
             <div
               key={step.number}
               className="relative bg-white rounded-xl border border-gray-200 p-8 hover:shadow-lg transition-all group flex flex-col"
             >
               <div className="flex items-start justify-between mb-6">
-                <div className="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center text-2xl group-hover:bg-blue-100 transition-colors shrink-0">
-                  <span>{step.icon}</span>
+                <div className="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center text-universal group-hover:bg-blue-100 transition-colors shrink-0">
+                  <step.Icon className="w-7 h-7" />
                 </div>
                 <span className="text-5xl font-bold text-gray-100 select-none">
                   {step.number}

@@ -1,18 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Image from "next/image";
-import { getEdges, type Edge } from "@/lib/api";
 
 export default function AccredianEdge() {
-  const [edges, setEdges] = useState<Edge[]>([]);
-
-  useEffect(() => {
-    getEdges().then(setEdges);
-  }, []);
-
-  if (edges.length === 0) return null;
-
   return (
     <section id="edge" className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -46,13 +36,6 @@ export default function AccredianEdge() {
           />
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {edges.map((edge) => (
-            <div
-            key={edge.title}
-            ></div>
-          ))}
-        </div>
       </div>
     </section>
   );
