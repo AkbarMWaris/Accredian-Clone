@@ -1,46 +1,27 @@
 "use client";
 
-import { Search, Route, Rocket } from "lucide-react";
-
-const stepIcons = [Search, Route, Rocket];
+import { TrendingUp, Presentation, CirclePlay } from "lucide-react";
 
 const steps = [
   {
-    number: "01",
+    number: 1,
     title: "Skill Gap Analysis",
-    description:
-      "We conduct a thorough assessment of your team's current capabilities and identify critical skill gaps through surveys, interviews, and benchmarking.",
-    deliverables: [
-      "Skills assessment report",
-      "Gap analysis matrix",
-      "Priority recommendations",
-    ],
+    description: "Assess team skill gaps and developmental needs.",
+    Icon: TrendingUp,
   },
   {
-    number: "02",
+    number: 2,
     title: "Customized Training Plan",
-    description:
-      "Our experts design a bespoke learning roadmap aligned with your business goals, team structure, and industry context.",
-    deliverables: [
-      "Learning roadmap",
-      "Content curriculum",
-      "Timeline & milestones",
-    ],
+    description: "Create a tailored roadmap addressing organizational goals.",
+    Icon: Presentation,
   },
   {
-    number: "03",
+    number: 3,
     title: "Flexible Program Delivery",
-    description:
-      "Deliver training through live instructor-led sessions, self-paced modules, or a blended approach — online or on-site at your premises.",
-    deliverables: [
-      "Live sessions",
-      "Self-paced modules",
-      "ROI measurement",
-    ],
+    description: "Deliver adaptable programs aligned with industry and organizational needs.",
+    Icon: CirclePlay,
   },
 ];
-
-const stepsWithIcons = steps.map((step, i) => ({ ...step, Icon: stepIcons[i] }));
 
 export default function HowWeDeliverResults() {
   return (
@@ -56,48 +37,23 @@ export default function HowWeDeliverResults() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {stepsWithIcons.map((step) => (
+          {steps.map((step) => (
             <div
               key={step.number}
-              className="relative bg-white rounded-xl border border-gray-200 p-8 hover:shadow-lg transition-all group flex flex-col"
+              className="relative bg-blue-50 rounded-xl p-8 pt-6 border-l-4 border-universal flex flex-col items-center text-center"
             >
-              <div className="flex items-start justify-between mb-6">
-                <div className="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center text-universal group-hover:bg-blue-100 transition-colors shrink-0">
-                  <step.Icon className="w-7 h-7" />
-                </div>
-                <span className="text-5xl font-bold text-gray-100 select-none">
-                  {step.number}
-                </span>
+              <span className="absolute -top-3 left-6 w-7 h-7 rounded-full bg-white border-2 border-universal text-universal text-sm font-bold flex items-center justify-center">
+                {step.number}
+              </span>
+              <div className="w-14 h-14 rounded-full bg-universal text-white flex items-center justify-center mb-5">
+                <step.Icon size={26} />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+              <h3 className="text-lg font-bold text-gray-900 mb-2">
                 {step.title}
               </h3>
-              <p className="text-gray-600 text-sm leading-relaxed mb-6 flex-1">
+              <p className="text-gray-600 text-sm">
                 {step.description}
               </p>
-              <div className="border-t border-gray-100 pt-4 mt-auto">
-                <div className="space-y-2">
-                  {step.deliverables.map((item) => (
-                    <div
-                      key={item}
-                      className="flex items-center gap-2 text-sm text-gray-500"
-                    >
-                      <svg
-                        className="w-4 h-4 text-universal shrink-0"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                      {item}
-                    </div>
-                  ))}
-                </div>
-              </div>
             </div>
           ))}
         </div>

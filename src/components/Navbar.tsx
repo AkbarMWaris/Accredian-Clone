@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 
 const NAV_ITEMS = [
@@ -17,12 +17,13 @@ const NAV_ITEMS = [
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
+  const lastClickRef = useRef(0);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
+          if (entry.isIntersecting && Date.now() - lastClickRef.current > 800) {
             setActiveSection(entry.target.id);
           }
         });
@@ -41,6 +42,7 @@ export default function Navbar() {
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
+    lastClickRef.current = Date.now();
     setActiveSection(id);
     const el = document.getElementById(id);
     if (el) {
